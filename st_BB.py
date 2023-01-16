@@ -4,16 +4,8 @@ from PIL import Image
 import pandas as pd
 import numpy as np
 import requests
-import matplotlib
-import matplotlib.pyplot as plt
-import yfinance as yf
-import altair as alt
-import os
-import sys
-import subprocess
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
 
+import yfinance as yf
 
 def RCI(x):
     n = len(x)
