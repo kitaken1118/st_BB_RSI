@@ -4,8 +4,6 @@ from PIL import Image
 import pandas as pd
 import numpy as np
 import requests
-from bs4 import BeautifulSoup
-import re
 import matplotlib
 import matplotlib.pyplot as plt
 import yfinance as yf
