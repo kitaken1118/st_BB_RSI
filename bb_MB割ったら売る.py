@@ -1,21 +1,10 @@
 from math import nan
 import streamlit as st
-from PIL import Image
 import pandas as pd
 import numpy as np
 import requests
-from bs4 import BeautifulSoup
 import re
-import matplotlib
-import matplotlib.pyplot as plt
 import yfinance as yf
-import altair as alt
-import os
-import sys
-import subprocess
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
-
 
 def RCI(x):
     n = len(x)
