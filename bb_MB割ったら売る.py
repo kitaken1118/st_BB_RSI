@@ -473,10 +473,10 @@ for code in codes:
                                 count_2 = count_2 +1
                             break
                         
-                        elif close < (0.95*buy):
-                            sell = source['Close'][n]
-                            profit = 100*(sell - buy)
-                            break
+                        #elif close < (0.95*buy):
+                            #sell = source['Close'][n]
+                            #profit = 100*(sell - buy)
+                           # break
                             
                         elif close == source['Close'][last]:
                             #print('現在もトレンド継続中')
@@ -498,10 +498,10 @@ for code in codes:
                                 count_4 = count_4 +1   
                             break
                             
-                        elif close > (1.05*decrease_buy):
-                            decrease_sell = source['Close'][n]
-                            decrease_profit = 100*(decrease_buy - decrease_sell)
-                            break
+                        #elif close > (1.05*decrease_buy):
+                            #decrease_sell = source['Close'][n]
+                            #decrease_profit = 100*(decrease_buy - decrease_sell)
+                           # break
                             
                         elif close == source['Close'][last]:
                             #print('現在も下降トレンド発生中')
