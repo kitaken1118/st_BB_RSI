@@ -532,12 +532,12 @@ percent_up = sum_count_2 / sum_count_1
 percent_down = sum_count_4 / sum_count_3
 
 
-print('上昇トレンドでの儲けは'+str(sum_profit))
-print('下降トレンドでの儲けは'+str(sum_decrease_profit))
-print('上昇トレンド発生回数：'+str(sum_count_1))
-print('下降トレンド発生回数：'+str(sum_count_3))
-print('勝率（上昇）：'+str(percent_up*100))
-print('勝率（下降）：'+str(percent_down*100))
+st.write('上昇トレンドでの儲けは'+str(sum_profit))
+st.write('下降トレンドでの儲けは'+str(sum_decrease_profit))
+st.write('上昇トレンド発生回数：'+str(sum_count_1))
+st.write('下降トレンド発生回数：'+str(sum_count_3))
+st.write('勝率（上昇）：'+str(percent_up*100))
+st.write('勝率（下降）：'+str(percent_down*100))
                 
                         
                             
