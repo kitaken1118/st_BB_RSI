@@ -383,7 +383,7 @@ for code in codes:
         dat_lower_2 = source['2lower'][i+2]
         dat_rsi = source['RSI'][i+2]
         
-        d3l_open = sourcr['Open'][i+3]
+        d3l_open = source['Open'][i+3]
         d3l_price = source['Close'][i+3]
         d3l_sma20 = source['sma20'][i+3]
         d3l_upper_2 = source['2upper'][i+3]
