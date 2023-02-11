@@ -1,6 +1,3 @@
-pip install streamlit 
-pip install yfinance
-
 from math import nan
 import streamlit as st
 from PIL import Image
