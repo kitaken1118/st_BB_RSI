@@ -455,8 +455,7 @@ for code in codes:
                     #print('購入額：'+str(decrease_buy))
                     
                 elif d3l_BB_B > 1.2 and d3l_MB_direction > 0 and d3l_band_width > (1.2*band_width) and price<d3l_open<d3l_price and d3l_low<(0.98*price) :後も同様
-                    #print('2日後に上昇トレンド発生')
-                    buy = 0.98*price#2日後にトレンド発生したのでその翌日の終値で購入
+                    buy = 0.98*price #2日後にトレンド発生したのでその翌日の終値で購入
                     count_1 = count_1 + 1
                     #print('購入額：'+str(buy))
                            
