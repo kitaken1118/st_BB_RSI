@@ -426,7 +426,7 @@ for code in codes:
         if z>130:#過去半年と比較するため、エラー回避のためにz>130とする
             min_band = min(width_array[z-130:])
             
-            if min_band == band_width :#過去半年で今日が最小のバンド幅の時に注目
+            if min_band == band_width:#過去半年で今日が最小のバンド幅の時に注目
                 #print('{}が半年で最小バンド幅'.format(source['Date'][i]))
                 #print('i:'+str(i))
                 
@@ -454,8 +454,8 @@ for code in codes:
                     count_3 = count_3 + 1
                     #print('購入額：'+str(decrease_buy))
                     
-                elif d3l_BB_B > 1.2 and d3l_MB_direction > 0 and d3l_band_width > (1.2*band_width) and price<d3l_open<d3l_price and d3l_low<(0.98*price):                   buy = 0.98*price #2日後にトレンド発生したのでその翌日の終値で購入
-                    buy = (0.98*price)
+                elif d3l_BB_B > 1.2 and d3l_MB_direction > 0 and d3l_band_width > (1.2*band_width) and price<d3l_open<d3l_price and d3l_low<(0.98*price):                   
+                    buy = 0.98*price #2日後にトレンド発生したのでその翌日の終値で購
                     count_1 = count_1 + 1
                     #print('購入額：'+str(buy))
                            
