@@ -444,7 +444,7 @@ for code in codes:
                 
                 elif dat_BB_B > 1.2 and dat_MB_direction > 0 and dat_band_width > (1.2*band_width) and price<dat_open<dat_price and dat_low<(0.98*price):#2日後も同様
                     #print('2日後に上昇トレンド発生')
-                    buy = 0.98*price#2日後にトレンド発生したのでその翌日の終値で購入
+                    buy = (0.98*price) #2日後にトレンド発生したのでその翌日の終値で購入
                     count_1 = count_1 + 1
                     #print('購入額：'+str(buy))
                            
