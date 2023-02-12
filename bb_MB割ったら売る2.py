@@ -370,6 +370,8 @@ for code in codes:
         rsi = source['RSI'][i]
         
         tomorrow_open = source['Open'][i+1]
+        tomorrow_high = source['High'][i+1]
+        tomorrow_low = source['Low'][i+1]
         tomorrow_price = source['Close'][i+1]
         tomorrow_sma20 = source['sma20'][i+1]
         tomorrow_upper_2 = source['2upper'][i+1]
@@ -377,6 +379,8 @@ for code in codes:
         tomorrow_rsi = source['RSI'][i+1]
         
         dat_open = source['Open'][i+2]
+        dat_high = source['High'][i+2]
+        dat_low = source['Low'][i+2]
         dat_price = source['Close'][i+2]
         dat_sma20 = source['sma20'][i+2]
         dat_upper_2 = source['2upper'][i+2]
@@ -384,6 +388,8 @@ for code in codes:
         dat_rsi = source['RSI'][i+2]
         
         d3l_open = source['Open'][i+3]
+        d3l_high = source['High'][i+3]
+        d3l_low =source['Low'][i+3]
         d3l_price = source['Close'][i+3]
         d3l_sma20 = source['sma20'][i+3]
         d3l_upper_2 = source['2upper'][i+3]
@@ -424,39 +430,39 @@ for code in codes:
                 #print('{}が半年で最小バンド幅'.format(source['Date'][i]))
                 #print('i:'+str(i))
                 
-                if tomorrow_BB_B > 1.2 and tomorrow_MB_direction > 0 and tomorrow_band_width > (1.2*band_width) and price<tomorrow_open<tomorrow_price :#注目した翌日に2σ以上になれば上昇トレンド発生と判断
+                if tomorrow_BB_B > 1.2 and tomorrow_MB_direction > 0 and tomorrow_band_width > (1.2*band_width) and price<tomorrow_open and tomorrow_low<(0.98*price) :#注目した翌日に2σ以上になれば上昇トレンド発生と判断
                     #print('翌日上昇トレンド発生')
-                    buy = source['Close'][i+1]#翌日発生したのでその一日後の終値で購入
+                    buy = 0.98*price#翌日発生したのでその一日後の終値で購入
                     count_1 = count_1 + 1
                     #print('購入額：'+str(buy))
                 
-                elif tomorrow_BB_B < -0.2 and tomorrow_MB_direction < 0 and tomorrow_band_width > (1.2*band_width) and price>tomorrow_open>tomorrow_price :#注目した翌日に-2σを下回ったら下降トレンド発生と判断
+                elif tomorrow_BB_B < -0.2 and tomorrow_MB_direction < 0 and tomorrow_band_width > (1.2*band_width) and price>tomorrow_open and tomorrow_high>(1.02*price) :#注目した翌日に-2σを下回ったら下降トレンド発生と判断
                     #print('翌日下降トレンド発生')
-                    decrease_buy = source['Close'][i+1]
+                    decrease_buy = 1.02*price
                     count_3 = count_3 + 1
                     #print('購入額：'+str(decrease_buy))
                 
-                elif dat_BB_B > 1.2 and dat_MB_direction > 0 and dat_band_width > (1.2*band_width) and price<dat_open<dat_price :#2日後も同様
+                elif dat_BB_B > 1.2 and dat_MB_direction > 0 and dat_band_width > (1.2*band_width) and price<dat_open<dat_price and dat_low<(0.98*price):#2日後も同様
                     #print('2日後に上昇トレンド発生')
-                    buy = source['Close'][i+2]#2日後にトレンド発生したのでその翌日の終値で購入
+                    buy = 0.98*price#2日後にトレンド発生したのでその翌日の終値で購入
                     count_1 = count_1 + 1
                     #print('購入額：'+str(buy))
                            
-                elif dat_BB_B < -0.2 and dat_MB_direction < 0 and dat_band_width > (1.2*band_width) and price>dat_open>dat_price :#2日後も同様
+                elif dat_BB_B < -0.2 and dat_MB_direction < 0 and dat_band_width > (1.2*band_width) and price>dat_open>dat_price and dat_high>(1.02price) :#2日後も同様
                     #print('2日後に下降トレンド発生')
-                    decrease_buy = source['Close'][i+2]
+                    decrease_buy = 1.02*price
                     count_3 = count_3 + 1
                     #print('購入額：'+str(decrease_buy))
                     
-                elif d3l_BB_B > 1.2 and d3l_MB_direction > 0 and d3l_band_width > (1.2*band_width) and price<d3l_open<d3l_price :#2日後も同様
+                elif d3l_BB_B > 1.2 and d3l_MB_direction > 0 and d3l_band_width > (1.2*band_width) and price<d3l_open<d3l_price and d3l_low<(0.98*price) :後も同様
                     #print('2日後に上昇トレンド発生')
-                    buy = source['Close'][i+3]#2日後にトレンド発生したのでその翌日の終値で購入
+                    buy = 0.98*price#2日後にトレンド発生したのでその翌日の終値で購入
                     count_1 = count_1 + 1
                     #print('購入額：'+str(buy))
                            
-                elif d3l_BB_B < -0.2 and d3l_MB_direction < 0 and d3l_band_width > (1.2*band_width) and price>d3l_open>d3l_price :#2日後も同様
+                elif d3l_BB_B < -0.2 and d3l_MB_direction < 0 and d3l_band_width > (1.2*band_width) and price>d3l_open>d3l_price and d3l_high>(1.02*price):#2日後も同様
                     #print('2日後に下降トレンド発生')
-                    decrease_buy = source['Close'][i+3]
+                    decrease_buy = 1.02*price
                     count_3 = count_3 + 1
                     #print('購入額：'+str(decrease_buy))
                            
