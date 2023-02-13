@@ -430,7 +430,7 @@ for code in codes:
         if z>130:#過去半年と比較するため、エラー回避のためにz>130とする
             min_band = min(width_array[z-130:])
             
-            if min_band == band_width:#過去半年で今日が最小のバンド幅の時に注目
+            if (1.2*min_band) > band_width:#過去半年で今日が最小のバンド幅の時に注目
                 #print('{}が半年で最小バンド幅'.format(source['Date'][i]))
                 #print('i:'+str(i))
                 
