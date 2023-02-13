@@ -434,25 +434,25 @@ for code in codes:
                 #print('{}が半年で最小バンド幅'.format(source['Date'][i]))
                 #print('i:'+str(i))
                 
-                if tomorrow_open>(1.02*price) and tomorrow_volume>(2*volume) and tomorrow_BB_B>1 and tomorrow_price>tomorrow_open:#注目した翌日に2σ以上になれば上昇トレンド発生と判断
+                if tomorrow_open>(1.02*price) and tomorrow_volume>(2*volume) and tomorrow_BB_B>1.2 and tomorrow_price>tomorrow_open:#注目した翌日に2σ以上になれば上昇トレンド発生と判断
                     #print('翌日上昇トレンド発生')
                     buy = dat_price#翌日発生したのでその一日後の終値で購入
                     count_1 = count_1 + 1
                     #print('購入額：'+str(buy))
                 
-                elif tomorrow_open<(0.98*price) and tomorrow_volume>(2*volume) and tomorrow_BB_B<0 and tomorrow_price<tomorrow_open:#注目した翌日に-2σを下回ったら下降トレンド発生と判断
+                elif tomorrow_open<(0.98*price) and tomorrow_volume>(2*volume) and tomorrow_BB_B<-0.2 and tomorrow_price<tomorrow_open:#注目した翌日に-2σを下回ったら下降トレンド発生と判断
                     #print('翌日下降トレンド発生')
                     decrease_buy = dat_price
                     count_3 = count_3 + 1
                     #print('購入額：'+str(decrease_buy))
                 
-                elif dat_open>(1.02*price) and dat_volume>(2*volume) and dat_BB_B>1 and dat_price>dat_open:#2日後も同様
+                elif dat_open>(1.02*price) and dat_volume>(2*volume) and dat_BB_B>1.2 and dat_price>dat_open:#2日後も同様
                     #print('2日後に上昇トレンド発生')
                     buy = d3l_price #2日後にトレンド発生したのでその翌日の終値で購入
                     count_1 = count_1 + 1
                     #print('購入額：'+str(buy))
                            
-                elif dat_open<(0.98*price) and dat_volume>(2*volume) and dat_BB_B<0 and dat_price<dat_open:#2日後も同様
+                elif dat_open<(0.98*price) and dat_volume>(2*volume) and dat_BB_B<-0.2 and dat_price<dat_open:#2日後も同様
                     #print('2日後に下降トレンド発生')
                     decrease_buy = d3l_price
                     count_3 = count_3 + 1
