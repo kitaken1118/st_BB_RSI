@@ -79,7 +79,6 @@ if '陽線によるカウントアップ方式(日経225推奨)' in options_2:
     
     for i in range(len):
       price = source['Close'][i]
-      tomorrow_price = source['Close'][i+1]
       open = source['Open'][i]
       volume = source['Volume'][i]
       sma05 = source['sma05'][i]
