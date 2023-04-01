@@ -35,7 +35,6 @@ if '陽線によるカウントアップ方式(日経225推奨)' in options_2:
     start_date = '2022-04-01' # 開始日
     source = yf.download(ticker, start=start_date, interval='1d')
     source2 = yf.download(ticker, start=start_date, interval='1wk')
-    source3 = yf.download(ticker, start=start_date, interval='1mo')
     len = len(source)
     st.write(len)
     st.write(code)
