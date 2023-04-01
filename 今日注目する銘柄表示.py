@@ -20,7 +20,7 @@ code_2 = ['1332','1605','1801', '1808','1802','1803','1721','1812','1925','1963'
 if select_1:
   codes = codes +code_1
 elif select_2:
-  codes = codes + codes_2
+  codes = codes + code_2
   
 st.write(codes)
 options_2 = st.multiselect('使用するテクニカル指標を選択してください',
