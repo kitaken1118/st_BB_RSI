@@ -83,64 +83,6 @@ if '陽線によるカウントアップ方式(日経225推奨)' in options_2:
           count_up = 0
        
        #半年間上昇トレンドが続き、rsiが65以下の時買いシグナル
-      if count_up>=80 and rsi<=70 and wk_sma04>wkago_sma04:
-        buy = tomorrow_price*100
-        count_buy = count_buy + 1
-
-         #買いシグナル点灯後の売りタイミングを見つける
-        if buy != 0:
-          count_up = count_up - 20
-          for n in range(i+1, i+100):
-            close = source['Close'][n]
-            tomorrow_close = source['Close'][n+1]
-            sma05 = source['sma05'][n]
-            sma25 = source['sma25'][n]
-            sma75 = source['sma75'][n]
-            rsi = source['RSI'][n]
-            yesterday_sma05 = source['sma05'][n-1]
-            yesterday_sma25 = source['sma25'][n-1]
-            interval = n-i
-
-            if n>=1219:
-              print(code)
-              print('現在もトレンド')
-              transaction_days.append(interval)
-              break
-
-             #買値の110%で利益確定
-            if (100*close)>(1.05*buy):
-              print(code)
-              print('利益確定')
-              sell = tomorrow_close*100
-              count_win = count_win + 1
-              profit = profit + sell - buy
-              transaction_days.append(interval)
-              break
-
-            #終値がsma25,75を下回るか、rsiが70以上で売り→上昇トレンドでの儲けは1193786.2548828125　上昇トレンド発生回数：80　勝率（上昇）：47.5　期待値:8881.40051514284
-            #if close<sma25 or close<sma75 or rsi>70:
-              #count_sell = count_sell + 1
-            
-            #sma5がsma25をデッドクロスしたとき
-            #if yesterday_sma05>yesterday_sma25 and sma05<sma25:
-              #count_sell = count_sell + 2
-            
-            #if count_sell>=2:
-              #sell = tomorrow_close*100
-              #print(sell-buy)
-              #count_sell = 0
-              #if sell>buy:
-                #profit = profit + sell - buy
-                #count_win = count_win + 1
-              #else:
-                #disprofit = disprofit + sell - buy
-              #break
-               
-             #損切は7%  
-            if (100*close)<(0.93*buy):
-              print(code)
-              print('損切')
-              sell = tomorrow_close*100
-              disprofit = disprofit + sell -buy
-              transaction_days.append(interval)
-              break
+      if  i==len and count_up>=80 and rsi<=70 and wk_sma04>wkago_sma04:
+        st.write(シグナル点灯中)
+ st.write('終了')
