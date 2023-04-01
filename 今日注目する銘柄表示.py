@@ -32,7 +32,7 @@ if '陽線によるカウントアップ方式(日経225推奨)' in options_2:
     option = code
     ticker = str(option) + '.T'
     tkr = yf.Ticker(ticker)
-    start_date = '2022-04-01' # 開始日
+    start_date = '2022-10-01' # 開始日
     source = yf.download(ticker, start=start_date, interval='1d')
     source2 = yf.download(ticker, start=start_date, interval='1wk')
     length = len(source)
@@ -110,6 +110,6 @@ if '陽線によるカウントアップ方式(日経225推奨)' in options_2:
           count_up = 0
        
        #半年間上昇トレンドが続き、rsiが65以下の時買いシグナル
-      if  i==len and count_up>=80 and rsi<=70 and wk_sma04>wkago_sma04:
+      if  i==length and count_up>=80 and rsi<=70 and wk_sma04>wkago_sma04:
         st.write(シグナル点灯中)
 st.write('finish!')
