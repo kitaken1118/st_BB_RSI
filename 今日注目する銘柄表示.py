@@ -50,6 +50,24 @@ if '陽線によるカウントアップ方式(日経225推奨)' in options_2:
     source2['sma08'] = source2['Close'].rolling(window=8).mean()
     source2['sma12'] = source2['Close'].rolling(window=12).mean()
     
+    #RSI
+    # 前日との差分を計算
+    df_diff = source["Close"].diff(1)
+
+    # 計算用のDataFrameを定義
+    df_up, df_down = df_diff.copy(), df_diff.copy()
+
+    # df_upはマイナス値を0に変換
+    # df_downはプラス値を0に変換して正負反転
+    df_up[df_up < 0] = 0
+    df_down[df_down > 0] = 0
+
+    df_up_14 = df_up.rolling(window = 14, center = False).mean()
+    df_down_14 = abs(df_down.rolling(window = 14, center = False).mean())
+    
+    # RSIを算出
+    source["RSI"] = 100.0 * (df_up_14 / (df_up_14 + df_down_14))
+    
     for i in range(len):
       price = source['Close'][i]
       tomorrow_price = source['Close'][i+1]
