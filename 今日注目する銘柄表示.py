@@ -9,7 +9,7 @@ codes = []
 st.title('テクニカル分析による注目銘柄表示')
 options_1 = st.multiselect('検索する銘柄群を選択してください',
                         ['日経225','1~2Kで買える出来高が多い銘柄'])
-st.write('You selected:', option_1)
+st.write('You selected:', options_1)
 
 
 if '日経225' in options_1:
@@ -20,7 +20,7 @@ if '1~2Kで買える出来高が多い銘柄' in options_1:
 st.write(codes)
 options_2 = st.multiselect('使用するテクニカル指標を選択してください',
                        ['陽線によるカウントアップ方式(日経225推奨)','ボリンジャーバンド','両方'])
-st.write('You selected:', option_2)
+st.write('You selected:', options_2)
 
 
 if options_2 == '陽線によるカウントアップ方式(日経225推奨)':
