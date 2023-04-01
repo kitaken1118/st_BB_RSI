@@ -30,7 +30,8 @@ if '陽線によるカウントアップ方式(日経225推奨)' in options_2:
     source = yf.download(ticker, start=start_date, interval='1d')
     source2 = yf.download(ticker, start=start_date, interval='1wk')
     source3 = yf.download(ticker, start=start_date, interval='1mo')
-
+    len = len(source)
+    
     #移動平均
     span01=5
     span02=25
@@ -48,7 +49,7 @@ if '陽線によるカウントアップ方式(日経225推奨)' in options_2:
     source2['sma08'] = source2['Close'].rolling(window=8).mean()
     source2['sma12'] = source2['Close'].rolling(window=12).mean()
     
-    for i in source:
+    for i in range(len):
       price = source['Close'][i]
       tomorrow_price = source['Close'][i+1]
       open = source['Open'][i]
