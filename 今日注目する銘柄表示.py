@@ -78,7 +78,7 @@ if '陽線によるカウントアップ方式(日経225推奨)' in options_2:
     count_up, count_down, count_buy, count_win, count_sell = 0, 0, 0, 0, 0
     profit, disprofit = 0, 0
     
-    for i in range(len):
+    for i in range(1, len):
       price = source['Close'][i]
       open = source['Open'][i]
       volume = source['Volume'][i]
