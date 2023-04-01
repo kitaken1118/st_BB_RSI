@@ -28,6 +28,8 @@ options_2 = st.multiselect('使用するテクニカル指標を選択してく�
 
 
 if '陽線によるカウントアップ方式(日経225推奨)' in options_2:
+  count_up, count_down, count_buy, count_win, count_sell = 0, 0, 0, 0, 0
+  profit, disprofit = 0, 0
   for code in codes:
     option = code
     ticker = str(option) + '.T'
