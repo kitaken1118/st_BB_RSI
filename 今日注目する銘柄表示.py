@@ -35,8 +35,8 @@ if '陽線によるカウントアップ方式(日経225推奨)' in options_2:
     start_date = '2022-04-01' # 開始日
     source = yf.download(ticker, start=start_date, interval='1d')
     source2 = yf.download(ticker, start=start_date, interval='1wk')
-    len = len(source)
-    st.write(len)
+    length = len(source)
+    st.write(length)
     st.write(code)
     
     #移動平均
@@ -77,7 +77,7 @@ if '陽線によるカウントアップ方式(日経225推奨)' in options_2:
     count_up, count_down, count_buy, count_win, count_sell = 0, 0, 0, 0, 0
     profit, disprofit = 0, 0
     
-    for i in range(1, len):
+    for i in range(1, length):
       price = source['Close'][i]
       open = source['Open'][i]
       volume = source['Volume'][i]
