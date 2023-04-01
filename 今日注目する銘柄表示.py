@@ -5,7 +5,7 @@ import requests
 import re
 import yfinance as yf
 
-#codes = []
+codes = []
 st.title('テクニカル分析による注目銘柄表示')
 st.write('検索する銘柄群を選択してください')
 select_1 = st.checkbox('日経225')
