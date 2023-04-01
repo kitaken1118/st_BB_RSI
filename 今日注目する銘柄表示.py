@@ -48,7 +48,7 @@ if '陽線によるカウントアップ方式(日経225推奨)' in options_2:
     source2['sma08'] = source2['Close'].rolling(window=8).mean()
     source2['sma12'] = source2['Close'].rolling(window=12).mean()
     
-    for i in range(1218):
+    for i in source:
       price = source['Close'][i]
       tomorrow_price = source['Close'][i+1]
       open = source['Open'][i]
