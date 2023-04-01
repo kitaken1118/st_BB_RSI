@@ -21,3 +21,6 @@ elif option_1 == '両方':
 
 st.write(codes)
  
+option_2 = st.selectbox('使用するテクニカル指標を選択してください',
+                       ('陽線によるカウントアップ方式(日経225推奨)','ボリンジャーバンド','両方'))
+st.write('You selected:', option_2)
