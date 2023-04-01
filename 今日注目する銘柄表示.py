@@ -37,7 +37,7 @@ if '陽線によるカウントアップ方式(日経225推奨)' in options_2:
     source2 = yf.download(ticker, start=start_date, interval='1wk')
     source3 = yf.download(ticker, start=start_date, interval='1mo')
     len = len(source)
-    len = ('len')
+    st.write(len)
     st.write(code)
     
     #移動平均
