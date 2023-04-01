@@ -28,8 +28,6 @@ options_2 = st.multiselect('使用するテクニカル指標を選択してく�
 
 
 if '陽線によるカウントアップ方式(日経225推奨)' in options_2:
-  count_up, count_down, count_buy, count_win, count_sell = 0, 0, 0, 0, 0
-  profit, disprofit = 0, 0
   for code in codes:
     option = code
     ticker = str(option) + '.T'
@@ -76,6 +74,9 @@ if '陽線によるカウントアップ方式(日経225推奨)' in options_2:
     # RSIを算出
     source["RSI"] = 100.0 * (df_up_14 / (df_up_14 + df_down_14))
     
+    count_up, count_down, count_buy, count_win, count_sell = 0, 0, 0, 0, 0
+    profit, disprofit = 0, 0
+    
     for i in range(len):
       price = source['Close'][i]
       tomorrow_price = source['Close'][i+1]
@@ -112,5 +113,4 @@ if '陽線によるカウントアップ方式(日経225推奨)' in options_2:
        #半年間上昇トレンドが続き、rsiが65以下の時買いシグナル
       if  i==len and count_up>=80 and rsi<=70 and wk_sma04>wkago_sma04:
         st.write(シグナル点灯中)
-      st.write('no:', code)
 st.write('finish!')
