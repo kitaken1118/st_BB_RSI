@@ -193,15 +193,6 @@ if 'ボリンジャーバンド' in options_2:
         price_high = source['High'][i]
         price_low = source['Low'][i]
         price_open = source['Open'][i]
-        if i>2:
-          price_yesterday = source['Close'][i-1]
-          price_direction = price - price_yesterday
-        if i<(length-1):
-          price_buy = source['Close'][i+1]
-          price_buy_percent3 = source['Close'][i+1] * 0.03 * -1
-          price_99 = source['Close'][i+1] * 0.97
-          price_103 = source['Close'][i+1] * 1.03
-
         sma20 = source['sma20'][i]
         std20 = source['std'][i]
         upper_2 = source['2upper'][i]
@@ -209,28 +200,6 @@ if 'ボリンジャーバンド' in options_2:
         upper_3 = source['3upper'][i]
         lower_3 = source['3lower'][i]
         rsi = source['RSI'][i]
-
-        if i<(length-1):
-          tomorrow_price = source['Close'][i+1]
-          tomorrow_sma20 = source['sma20'][i+1]
-          tomorrow_upper_2 = source['2upper'][i+1]
-          tomorrow_lower_2 = source['2lower'][i+1]
-          tomorrow_rsi = source['RSI'][i+1]
-
-
-        if i<(length-2):
-          dat_price = source['Close'][i+2]
-          dat_sma20 = source['sma20'][i+2]
-          dat_upper_2 = source['2upper'][i+2]
-          dat_lower_2 = source['2lower'][i+2]
-          dat_rsi = source['RSI'][i+2]
-
-        if i<(length-3):
-          d3l_price = source['Close'][i+3]
-          d3l_sma20 = source['sma20'][i+3]
-          d3l_upper_2 = source['2upper'][i+3]
-          d3l_lower_2 = source['2lower'][i+3]
-          d3l_rsi = source['RSI'][i+3]
 
         buy = 0
         decrease_buy = 0
@@ -240,26 +209,6 @@ if 'ボリンジャーバンド' in options_2:
         band_width = (upper_2 - lower_2)/sma20
         BB_B = (price-lower_2) / (upper_2-lower_2)
 
-        if i<(length-1):
-          tomorrow_band_width = (tomorrow_upper_2 - tomorrow_lower_2)/tomorrow_sma20
-          tomorrow_BB_B = (tomorrow_price-tomorrow_lower_2)/(tomorrow_upper_2-tomorrow_lower_2)
-
-        if i<(length-2):
-          dat_band_width = (dat_upper_2-dat_lower_2)/dat_sma20
-          dat_BB_B = (dat_price - dat_lower_2)/(dat_upper_2 - dat_lower_2)
-
-        if i<(length-3):
-          d3l_band_width = (d3l_upper_2-d3l_lower_2)/d3l_sma20
-          d3l_BB_B = (d3l_price - d3l_lower_2)/(d3l_upper_2 - d3l_lower_2)
-
-        width_array.append(band_width)
-        BBB_array.append(BB_B)
-
-        if i>3:
-            MB_direction = (source['sma20'][i]-source['sma20'][i-1])# - (source['sma20'][i-2] + source[i-3])
-            tomorrow_MB_direction = (source['sma20'][i+1] - source['sma20'][i])# - (source['sma20'][i-1] + source[i-2])
-            dat_MB_direction = (source['sma20'][i+2] - source['sma20'][i])# - (source['sma20'][i] + source[i-1])
-            d3l_MB_direction = (source['sma20'][i+3] - source['sma20'][i])
         z = z+1
 
         if z>130:#過去半年と比較するため、エラー回避のためにz>130とする
