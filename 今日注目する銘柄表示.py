@@ -95,7 +95,7 @@ if '陽線によるカウントアップ方式(日経225推奨)' in options_2:
         wkago_sma08 = source2['sma08'][w-1]
         wkago_sma12 = source2['sma12'][w-1]
 
-     #sma25とsma75より終値が高いときカウントアップ
+      #sma25とsma75より終値が高いときカウントアップ
       if sma05>sma25 and sma05>sma75 :
 
         count_up = count_up + 1
@@ -178,15 +178,6 @@ if 'ボリンジャーバンド' in options_2:
     BBB_array = []
     BBB_direction = 0
     MB_direction = 0
-
-    start = 60
-    last = 600
-
-    total_profit = 0
-    total_decrease_profit = 0
-
-    count_1, count_2, count_3, count_4 = 0, 0, 0, 0
-
     for i in range(length):
         price = source['Close'][i]
         volume = source['Volume'][i]
@@ -200,15 +191,8 @@ if 'ボリンジャーバンド' in options_2:
         upper_3 = source['3upper'][i]
         lower_3 = source['3lower'][i]
         rsi = source['RSI'][i]
-
-        buy = 0
-        decrease_buy = 0
-        profit = 0
-        decrease_profit = 0
-
         band_width = (upper_2 - lower_2)/sma20
         BB_B = (price-lower_2) / (upper_2-lower_2)
-
         z = z+1
 
         if z>130:#過去半年と比較するため、エラー回避のためにz>130とする
