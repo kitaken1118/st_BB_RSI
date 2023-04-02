@@ -128,6 +128,41 @@ if 'ボリンジャーバンド' in options_2:
     source2 = yf.download(ticker, start=start_date, interval='1wk')
     length = len(source)
     
+    #移動平均
+    span01=5
+    span02=25
+    span03=50
+    span04=20
+    span05=75
+
+    source['sma05'] = source['Close'].rolling(window=span01).mean()
+    source['sma25'] = source['Close'].rolling(window=span02).mean()
+    source['sma50'] = source['Close'].rolling(window=span03).mean()
+    source['sma20'] = source['Close'].rolling(window=span04).mean()
+    source['sma75'] = source['Close'].rolling(window=span05).mean()
+
+    source2['sma04'] = source2['Close'].rolling(window=4).mean()
+    source2['sma08'] = source2['Close'].rolling(window=8).mean()
+    source2['sma12'] = source2['Close'].rolling(window=12).mean()
+    #RSI
+    # 前日との差分を計算
+    df_diff = source["Close"].diff(1)
+
+    # 計算用のDataFrameを定義
+    df_up, df_down = df_diff.copy(), df_diff.copy()
+
+    # df_upはマイナス値を0に変換
+    # df_downはプラス値を0に変換して正負反転
+    df_up[df_up < 0] = 0
+    df_down[df_down > 0] = 0
+
+    df_up_14 = df_up.rolling(window = 14, center = False).mean()
+    df_down_14 = abs(df_down.rolling(window = 14, center = False).mean())
+    
+    # RSIを算出
+    source["RSI"] = 100.0 * (df_up_14 / (df_up_14 + df_down_14))
+    
+    
     x, z= 0, 0
     width_array = []
     BBB_array = []
@@ -156,7 +191,6 @@ if 'ボリンジャーバンド' in options_2:
           price_buy_percent3 = source['Close'][i+1] * 0.03 * -1
           price_99 = source['Close'][i+1] * 0.97
           price_103 = source['Close'][i+1] * 1.03
-          price_change = price_days - price_buy
 
         sma20 = source['sma20'][i]
         std20 = source['std'][i]
