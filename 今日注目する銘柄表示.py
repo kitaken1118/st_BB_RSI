@@ -162,6 +162,16 @@ if 'ボリンジャーバンド' in options_2:
     # RSIを算出
     source["RSI"] = 100.0 * (df_up_14 / (df_up_14 + df_down_14))
     
+     #ボリンジャーバンド
+    # 標準偏差
+    source["std"] = source["Close"].rolling(window=20).std()
+    
+    # ボリンジャーバンド
+    source["2upper"] = source["sma20"] + (2 * source["std"])
+    source["2lower"] = source["sma20"] - (2 * source["std"])
+    source["3upper"] = source["sma20"] + (3 * source["std"])
+    source["3lower"] = source["sma20"] - (3 * source["std"])
+    
     
     x, z= 0, 0
     width_array = []
