@@ -194,9 +194,11 @@ if 'ボリンジャーバンド' in options_2:
         band_width = (upper_2 - lower_2)/sma20
         BB_B = (price-lower_2) / (upper_2-lower_2)
         z = z+1
+        width_array.append(band_width)
+        BBB_array.append(BB_B)
 
-        if z>130:#過去半年と比較するため、エラー回避のためにz>130とする
-            min_band = min(width_array[z-130:])
+        if i>130:#過去半年と比較するため、エラー回避のためにz>130とする
+            min_band = min(width_array[i-130:])
 
             if min_band == band_width and i>=(length-3):#過去半年で今日が最小のバンド幅の時に注目
                 st.write('code:',)
