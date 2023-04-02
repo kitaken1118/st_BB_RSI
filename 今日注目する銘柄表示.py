@@ -190,6 +190,7 @@ if 'ボリンジャーバンド' in options_2:
         lower_2 = source['2lower'][i]
         upper_3 = source['3upper'][i]
         lower_3 = source['3lower'][i]
+        date = source['Date'][i]
         rsi = source['RSI'][i]
         band_width = (upper_2 - lower_2)/sma20
         BB_B = (price-lower_2) / (upper_2-lower_2)
@@ -202,6 +203,6 @@ if 'ボリンジャーバンド' in options_2:
 
             if min_band == band_width and i>=(length-3):#過去半年で今日が最小のバンド幅の時に注目
                 st.write('code:',)
-                st.write('{}が半年で最小バンド幅'.format(source['Date'][i]))
+                st.write('半年で最小バンド幅日付', date)
                 st.balloons()
 st.write('finish!')
