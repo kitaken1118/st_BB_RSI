@@ -112,5 +112,7 @@ if '陽線によるカウントアップ方式(日経225推奨)' in options_2:
        #半年間上昇トレンドが続き、rsiが65以下の時買いシグナル
       if  i==length and count_up>=80 and rsi<=70 and wk_sma04>wkago_sma04:
         st.write(シグナル点灯中)
-    st.write('今日のカウント数は:', count_up)
+        st.balloons()
+    if count_up >50:
+      st.write('今日のカウント数は:', count_up)
 st.write('finish!')
