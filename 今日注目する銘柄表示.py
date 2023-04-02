@@ -202,6 +202,6 @@ if 'ボリンジャーバンド' in options_2:
 
             if min_band == band_width and i>=(length-3):#過去半年で今日が最小のバンド幅の時に注目
                 st.write('code:', code)
-                st.write('半年で最小バンド幅日付', source['Date'][i])
+                st.write('半年で最小バンド幅日付', i)
                 st.balloons()
 st.write('finish!')
